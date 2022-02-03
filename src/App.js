@@ -16,7 +16,7 @@ function App() {
   const [allGoblins, setAllGoblins] = useState([]);
   const [filteredGoblins, setFilteredGoblins] = useState([]);
   const [goblinFormName, setGoblinFormName] = useState('');
-  const [goblinFormHP, setGoblinFormHP] = useState(0);
+  const [goblinFormHP, setGoblinFormHP] = useState('');
   const [goblinFormColor, setGoblinFormColor] = useState('');
 
   function submitGoblin(e) {
@@ -33,16 +33,17 @@ function App() {
     setAllGoblins([...allGoblins, newGoblin]);
     // clear out the goblin form state items by setting them to empty strings. This will cause the form to reset in the UI.
     setGoblinFormName('');
-    setGoblinFormHP(0);
+    setGoblinFormHP('');
     setGoblinFormColor('');
   }
 
   function handleDeleteGoblin(id) {
     // find the index of the goblin in allGoblins with this id
-
+    const index = allGoblins.findIndex(goblin => goblin.id === id);
     // use splice to delete the goblin object at this index
-
+    allGoblins.splice(index, 1);
     // update the allGoblins array immutably to this new, smaller array
+    setAllGoblins([...allGoblins]);
   }
 
   function handleFilterGoblins(search) {
