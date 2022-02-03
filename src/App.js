@@ -16,7 +16,7 @@ function App() {
   const [allGoblins, setAllGoblins] = useState([]);
   const [filteredGoblins, setFilteredGoblins] = useState([]);
   const [goblinFormName, setGoblinFormName] = useState('');
-  const [goblinFormHP, setGoblinFormHP] = useState('');
+  const [goblinFormHP, setGoblinFormHP] = useState(0);
   const [goblinFormColor, setGoblinFormColor] = useState('');
 
   function submitGoblin(e) {
@@ -33,7 +33,7 @@ function App() {
     setAllGoblins([...allGoblins, newGoblin]);
     // clear out the goblin form state items by setting them to empty strings. This will cause the form to reset in the UI.
     setGoblinFormName('');
-    setGoblinFormHP('');
+    setGoblinFormHP(0);
     setGoblinFormColor('');
   }
 
@@ -61,6 +61,9 @@ function App() {
             use the goblin form state to make a goblin object and to display it. 
             This will let the user see the current form state 
           */
+          name: goblinFormName,
+          hp: goblinFormHP,
+          color: goblinFormColor
         }} />
       </div>
       <div className='goblin-filter quarter'>
